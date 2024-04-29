@@ -1,1 +1,59 @@
-This is the home page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>LLM Tutor Prototype</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="ml-40 mr-40">
+    <div id="nav_bar" class="mt-5 mb-20 flex flex-row items-center">
+        <h1 class="text-6xl"><a href="index.html">LLM Tutor</a></h1>
+        <div class="flex ml-auto justify-end w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+            <svg class="w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-5xl">Welcome Anya!</h1>
+        <h3 class="text-3xl">Ready to Practice for the AMC 8?</h3>
+    </div>
+    <div class="mt-5 mb-20">
+        <h2></h2>
+       AMC-8 Readiness: 92
+    </div>
+    <div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Algebra', 'Arithmetic', 'Counting', 'Geometry', 'Logic', 'Number Theory', 'Probability'],
+            datasets: [{
+              label: 'Readiness',
+              data: [99, 94, 95, 91, 90, 96, 81],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+                r: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+          }
+        });
+      </script>
+</body>
+</html>
