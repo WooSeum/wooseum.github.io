@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>LLM Tutor Prototype</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="mx-96">
+    <div id="nav_bar" class="mt-5 mb-20 flex flex-row items-center">
+        <h1 class="text-6xl"><a href="../index.html">LLM Tutor</a></h1>
+        <div class="flex ml-auto justify-end w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+            <svg class="w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+        </div>
+    </div>
+    <div id="title">
+        <h1 class="text-6xl mb-10">Probability Practice</h1>
+    </div>
+    <div id="question_area">
+        <h1 id="question" class="text-3xl mb-10"><span class="font-bold">Question: </span></h1>
+        <div>
+            <div id="answerChoices" class="text-3xl flex flex-col items-center mt-3">
+            </div>
+        </div>
+    </div>
+    <div id="nav_controls" class="bottom-0 absolute flex flex-row border-t-2 border-gray-300 justify-center mb-10 text-3xl" style="width: 70%;">
+        <button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10" onclick="check_ans()">Submit Answer</button>
+    </div>
+    <script>
+        const question_element = document.getElementById('question');
+        question.innerHTML+="All of Marcy's marbles are blue, red, green, or yellow. One third of her marbles are blue, one fourth of them are red, and six of them are green. What is the smallest number of yellow marbles that Macy could have?";
+        
+        const answer_choices_element = document.getElementById('answerChoices');
+        const answer_choices = [1, 2, 3, 4, 5]
+
+        for (let i = 0; i < answer_choices.length; i++) {
+            answer_choices_element.innerHTML += `<h1 id="ac_`+i+`" class="border border-grey-800 px-4 rounded hover:bg-gray-300 w-60 text-center mb-3" onclick="set_ans(`+i+`);">`+answer_choices[i]+`</h1>`
+        }
+
+        const correct_ans_idx = 3;
+        let answer_choice = -1;
+        function set_ans(i) {
+            answer_choice = i;
+            for (let i = 0; i < answer_choices.length; i++) {
+                document.getElementById("ac_"+i).classList.remove("bg-gray-300");
+            }
+            document.getElementById("ac_"+i).classList.add("bg-gray-300");
+        }
+
+        function check_ans() {
+            if (answer_choice == correct_ans_idx) {
+                document.getElementById("ac_"+answer_choice).classList.add("bg-green-300");
+            } else {
+                document.getElementById("ac_"+answer_choice).classList.add("bg-red-300", "cursor-not-allowed");
+                document.getElementById("ac_"+answer_choice).classList.remove("hover:bg-gray-300");
+            }
+        }
+    </script>
+</body>
+</html>

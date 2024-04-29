@@ -9,61 +9,71 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="ml-32 mr-32">
+<body class="ml-96 mr-96">
     <div id="nav_bar" class="mt-5 mb-20 flex flex-row items-center">
         <h1 class="text-6xl"><a href="index.html">LLM Tutor</a></h1>
         <div class="flex ml-auto justify-end w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
             <svg class="w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
         </div>
     </div>
-    <div>
-        <h1 class="text-5xl">Welcome Anya!</h1>
-        <h3 class="text-3xl">Ready to Practice for the AMC 8?</h3>
+    <div id="intro" class="flex flex-row mb-5">
+        <div>
+            <h1 class="text-5xl">Welcome Anya!</h1>
+            <h3 class="text-2xl">Ready to Practice for the AMC 8?</h3>
+        </div>
+        <div class="ml-auto text-xl	flex items-center">
+           <h1 class="text-3xl">AMC-8 Readiness: <span class="text-green-700 whitespace-pre font-bold"> 92</span></h1>
+        </div>
+    </div>
+    <div class="mt-10 mb-10">
+        <h1 class="text-3xl">We Recommend Practicing <span class="font-bold">Probability</span> to Increase Your Readiness the Most.</h1>
+        <a href="probability/index.html">
+            <button class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Practice Now
+            </button>
+        </a>
     </div>
     <div id="topics_overview">
-        <h1>Select a Topic You Want to Practice</h1>
+        <h1 class="text-4xl mb-5">Select a Topic You Want to Practice</h1>
         <div class="flex flex-row flex-wrap">
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
                 <img class="size-10" src="images/algebra-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Algebra</div>
             </a>
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+                <img class="size-10" src="images/arithmetic-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Arithmetic</div>
             </a>
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+                <img class="size-10" src="images/counting-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Counting</div>
             </a>
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+                <img class="size-10" src="images/geometry-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Geometry</div>
             </a>
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+                <img class="size-10" src="images/logic-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Logic</div>
             </a>
             <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+                <img class="size-10" src="images/number-theory-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Number Theory</div>
             </a>
-            <a href="#" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
-                <img class="size-10" src="images/algebra-logo.png" alt="">
+            <a href="probability/index.html" class="flex flex-row items-center justify-center border-solid border-2 border-grey-800 m-1 w-60 hover:bg-gray-200">
+                <img class="size-10" src="images/probability-logo.png" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">Probability</div>
             </a>
         </div>
     </div>
-    <div class="mt-5 mb-20">
-        <h2></h2>
-       AMC-8 Readiness: 92
-    </div>
     <div>
-        <div>
-            <canvas id="myChart"></canvas>
+        <h1 class="text-4xl mt-5">AMC-8 Skills Breakdown</h1>
+        <div class="size-1/4 ml-auto mr-auto">
+            <canvas id="skillsMatrix"></canvas>
         </div>
     </div>
     <script>
-        const ctx = document.getElementById('myChart');
+        const ctx = document.getElementById('skillsMatrix');
         new Chart(ctx, {
           type: 'radar',
           data: {
